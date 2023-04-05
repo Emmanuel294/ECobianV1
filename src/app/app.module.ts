@@ -9,6 +9,8 @@ import { TestsComponent } from './tests/tests.component';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore/'
 import { AngularFireModule } from '@angular/fire/compat';
+import { FirebaseService } from './services/firebase/firebase.service';
+import { ProfileService } from './services/profile/profile.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,10 @@ import { AngularFireModule } from '@angular/fire/compat';
     ),
     AngularFirestoreModule,
   ],
-  providers: [],
+  providers: [
+    FirebaseService,
+    ProfileService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

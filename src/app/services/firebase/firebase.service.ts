@@ -1,7 +1,7 @@
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { FirebaseCollections } from 'src/app/entities/firebase.types';
 import { Injectable } from '@angular/core';
-import { AngularFirestore, DocumentChangeAction } from '@angular/fire/compat/firestore';
-import { map, Observable } from 'rxjs';
-import { FirebaseCollections, FirebaseDocuments } from 'src/app/entities/firebase.types';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,22 +12,7 @@ export class FirebaseService {
     private readonly firestore: AngularFirestore
   ) { }
 
-  public getObjectList(object: FirebaseCollections): Observable<Array<FirebaseDocuments>> {
-    return this.firestore.collection(object).snapshotChanges()
-      .pipe(
-        map(
-          (obj: DocumentChangeAction<any>[]): Array<FirebaseDocuments> => {
-            return obj.map(
-              (object): any => {
-                const data = object.payload.doc.data();
-
-                return {
-                  ...data
-                }
-              }
-            )
-          }
-        )
-      );
+  public getCollectionDataObservable(object: FirebaseCollections): Observable<Array<any>> {
+    return this.firestore.collection(object).valueChanges();
   }
 }
