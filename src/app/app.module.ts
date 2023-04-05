@@ -6,6 +6,11 @@ import { AppComponent } from './app.component';
 import { AngularMaterialModule } from './custom-modules/angularMaterialModule';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TestsComponent } from './tests/tests.component';
+import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore/'
+import { AngularFireModule } from '@angular/fire/compat';
+import { FirebaseService } from './services/firebase/firebase.service';
+import { ProfileService } from './services/profile/profile.service';
 
 @NgModule({
   declarations: [
@@ -16,9 +21,17 @@ import { TestsComponent } from './tests/tests.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    AngularFireModule.initializeApp(
+      environment.firebase,
+      environment.firebase.projectId,
+    ),
+    AngularFirestoreModule,
   ],
-  providers: [],
+  providers: [
+    FirebaseService,
+    ProfileService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
