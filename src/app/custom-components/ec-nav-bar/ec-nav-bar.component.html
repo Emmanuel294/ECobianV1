@@ -1,0 +1,16 @@
+<div class="grid">
+    <div class="col-start-5 col-end-6">
+        <ul class="flex justify-between h-full items-center text-[white]">
+            <li *ngFor="let link of links">
+                <a class="ec-custom-link" [title]="link.tooltip" [href]="link.href">{{link.link}}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-start-6 flex justify-center">
+        <button 
+        class="ec-custom-button" 
+        *ngFor="let button of buttons"
+        [title]="button.tooltip"
+        >{{button.title}}</button>
+    </div>
+</div>
