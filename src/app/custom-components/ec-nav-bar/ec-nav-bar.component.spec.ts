@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TestsComponent } from './tests.component';
+import { EcNavBarComponent } from './ec-nav-bar.component';
 
-describe('TestsComponent', () => {
-  let component: TestsComponent;
-  let fixture: ComponentFixture<TestsComponent>;
+describe('EcNavBarComponent', () => {
+  let component: EcNavBarComponent;
+  let fixture: ComponentFixture<EcNavBarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TestsComponent ]
+      declarations: [ EcNavBarComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TestsComponent);
+    fixture = TestBed.createComponent(EcNavBarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
