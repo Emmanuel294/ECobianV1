@@ -1,14 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy } from '@angular/core';
 import { LinkT } from '../types/components/links.type';
 import { ButtonT } from '../types/components/button.type';
 import { PresentationT } from '../types/components/presentation.type';
+import { ProfileService } from '../services/profile/profile.service';
+import { ProfileDocument } from '../entities/profile.types';
+import { Subscription } from 'rxjs';
+import { TechnologyService } from '../services/technology/technology.service';
+import { TechnologyDocument } from '../entities/technologie.types';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
-export class MainComponent implements OnInit {
+export class MainComponent implements AfterViewInit, OnDestroy {
+
+  public profilesSubscription: Subscription | undefined = undefined;
+  public technologiesSubscription: Subscription | undefined = undefined;
+
+  public profileDocument: ProfileDocument | undefined = undefined;
+  public technologiesDocuments: Array<TechnologyDocument> | undefined = undefined;
 
   public navVarLinks: Array<LinkT> = [
     {
@@ -37,15 +48,47 @@ export class MainComponent implements OnInit {
   ];
 
   public presentationContent: PresentationT = {
-    presentation: 'Hi my name is',
-    mainContent: 'Emmanuel Cobian.',
-    content: `Innovative Software Engineer with a good track of software development with  different technologies, 
-    Now working on providing different and innovative solutions  with web technologies.`
+    presentation: '',
+    mainContent: '',
+    content: ''
   }
 
-  constructor() { }
+  constructor(
+    private readonly profileService: ProfileService,
+    private readonly technologyService: TechnologyService,
+  ) { }
 
-  ngOnInit(): void {
+  public async ngAfterViewInit(): Promise<void> {
+    this.profilesSubscription = this.profileService
+      .getProfiles()
+      .subscribe(
+        (profileDocuments: Array<ProfileDocument>): void => {
+          profileDocuments.forEach(
+            (profileDocument: ProfileDocument): void => {
+              this.presentationContent = {
+                presentation: 'Hi my name is',
+                mainContent: `${profileDocument.firstName} ${profileDocument.lastName}.`,
+                content: profileDocument.description
+              };
+            }
+          );
+          this.profileDocument = {
+            ...profileDocuments[0],
+            aboutMe: profileDocuments[0].aboutMe.replace('\\n', '<br>')
+          };
+        }
+      );
+
+    this.technologiesSubscription = this.technologyService.getTechnologiesObservable()
+      .subscribe(
+        (technologies: Array<TechnologyDocument>): void => {
+          this.technologiesDocuments = technologies;
+        }
+      )
+  }
+
+  public ngOnDestroy(): void {
+    this.profilesSubscription?.unsubscribe();
   }
 
 }

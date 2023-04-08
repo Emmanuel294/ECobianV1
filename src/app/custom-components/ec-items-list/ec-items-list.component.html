@@ -1,0 +1,14 @@
+<div *ngIf="items">
+    <ul class="flex flex-col flex-wrap content-start justify-start h-40">
+        <li 
+        *ngFor="let item of items" 
+        class="flex mr-10 text-light-system-gray-1 text-xl mt-3"
+        >
+        <mat-icon 
+        class="text-light-system-purple-1 mr-1"
+        >
+        radio_button_checked
+        </mat-icon>
+            {{item}}
+        </li>
+    </ul>
