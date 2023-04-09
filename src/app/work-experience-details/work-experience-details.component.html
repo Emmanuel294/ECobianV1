@@ -1,0 +1,18 @@
+<div *ngIf="work" class="flex flex-col items-start max-w-3xl">
+    <div class="">
+        <span class="text-2xl text-[white]">{{work.position}}</span>
+        <span class="text-xl text-light-system-gray-1"> at </span>
+        <span class="text-2xl text-light-system-purple-2">{{work.place}}</span>
+    </div>
+    <div class="">
+        <span class="text-xl text-light-system-gray-1">
+            From {{work.time[0] | date}} To {{work.time[1] === 'present' ? 'Present' : work.time[1] | date}}
+        </span>
+    </div>
+    <div class="">
+        <ec-items-list
+        [items]="work.responsibilities"
+        >
+        </ec-items-list>
+    </div>
+</div>

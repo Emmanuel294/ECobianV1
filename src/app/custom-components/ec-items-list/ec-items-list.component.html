@@ -1,5 +1,5 @@
-<div *ngIf="items">
-    <ul class="flex flex-col flex-wrap content-start justify-start h-40">
+<div *ngIf="items" class="h-full">
+    <ul class="flex flex-col flex-wrap content-start justify-start h-full">
         <li 
         *ngFor="let item of items" 
         class="flex mr-10 text-light-system-gray-1 text-xl mt-3"
@@ -12,3 +12,4 @@
             {{item}}
         </li>
     </ul>
+</div>

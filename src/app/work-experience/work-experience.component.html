@@ -1,0 +1,9 @@
+<div class="m-auto w-9/12">
+    <div *ngIf="works">
+        <ec-separator [separatorName]="'Work Experience'"></ec-separator>
+        <ec-details-list
+        class="w-full"
+                [listValues]="getListValuesFromWorks()"
+            ></ec-details-list>
+    </div>
+</div>

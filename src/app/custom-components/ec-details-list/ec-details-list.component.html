@@ -1,0 +1,21 @@
+<div class="flex w-full justify-start content-center">
+    <mat-selection-list 
+    #listItems 
+    [multiple]="false"
+    (selectionChange)="onItemChange($event)"
+    class="w-3/12"
+    >
+        <mat-list-option 
+        *ngFor="let listValue of getListLabels();"
+        class="border-l-4 border-light-system-gray-1 text-light-system-gray-1"
+        checkboxPosition="before"
+        [value]="listValue"
+        [class.active]="selectedItem === listValue"
+        [ngClass]="listValue === defaultSelection ? 'active' : ''"
+        >
+        {{listValue}}
+        </mat-list-option>
+    </mat-selection-list>
+    <ng-container #listContent class="w-9/12">
+    </ng-container>
+</div>

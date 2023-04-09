@@ -16,6 +16,9 @@ import { EcPresentationComponent } from './custom-components/ec-presentation/ec-
 import { EcSeparatorComponent } from './custom-components/ec-separator/ec-separator.component';
 import { AboutMeComponent } from './about-me/about-me.component';
 import { EcItemsListComponent } from './custom-components/ec-items-list/ec-items-list.component';
+import { WorkExperienceComponent } from './work-experience/work-experience.component';
+import { EcDetailsListComponent } from './custom-components/ec-details-list/ec-details-list.component';
+import { WorkExperienceDetailsComponent } from './work-experience-details/work-experience-details.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,9 @@ import { EcItemsListComponent } from './custom-components/ec-items-list/ec-items
     EcItemsListComponent,
     MainComponent,
     AboutMeComponent,
+    WorkExperienceComponent,
+    EcDetailsListComponent,
+    WorkExperienceDetailsComponent
   ],
   imports: [
     AppRoutingModule,

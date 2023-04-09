@@ -7,6 +7,8 @@ import { ProfileDocument } from '../entities/profile.types';
 import { Subscription } from 'rxjs';
 import { TechnologyService } from '../services/technology/technology.service';
 import { TechnologyDocument } from '../entities/technologie.types';
+import { WorkService } from '../services/work/work.service';
+import { WorkDocument } from '../entities/work.types';
 
 @Component({
   selector: 'app-main',
@@ -17,9 +19,11 @@ export class MainComponent implements AfterViewInit, OnDestroy {
 
   public profilesSubscription: Subscription | undefined = undefined;
   public technologiesSubscription: Subscription | undefined = undefined;
+  public worksSubscription: Subscription | undefined = undefined;
 
   public profileDocument: ProfileDocument | undefined = undefined;
-  public technologiesDocuments: Array<TechnologyDocument> | undefined = undefined;
+  public technologiesDocuments: Array<TechnologyDocument> = [];
+  public worksDocuments: Array<WorkDocument> = [];
 
   public navVarLinks: Array<LinkT> = [
     {
@@ -56,6 +60,7 @@ export class MainComponent implements AfterViewInit, OnDestroy {
   constructor(
     private readonly profileService: ProfileService,
     private readonly technologyService: TechnologyService,
+    private readonly workService: WorkService,
   ) { }
 
   public async ngAfterViewInit(): Promise<void> {
@@ -84,11 +89,19 @@ export class MainComponent implements AfterViewInit, OnDestroy {
         (technologies: Array<TechnologyDocument>): void => {
           this.technologiesDocuments = technologies;
         }
-      )
+      );
+
+    this.worksSubscription = this.workService.getWorksObservable()
+      .subscribe(
+        (workDocuments: Array<WorkDocument>): void => {
+          this.worksDocuments = workDocuments;
+        }
+      );
   }
 
   public ngOnDestroy(): void {
     this.profilesSubscription?.unsubscribe();
+    this.technologiesSubscription?.unsubscribe();
   }
 
 }

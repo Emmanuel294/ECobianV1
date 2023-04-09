@@ -1,0 +1,10 @@
+.mat-list-item{
+    background: transparent;
+    color: #82888C;
+    font-family: 'Share Tech';
+    font-size: 1.3rem;
+  }
+.mat-list-item.active{
+    color: #83C3FF;
+    border-color: #83C3FF;
+  }

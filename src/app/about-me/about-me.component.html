@@ -7,7 +7,7 @@
         <p class="w-7/12 text-light-system-gray-1 text-2xl mt-3">
             Here are a few of the technologies I've been working with:
         </p>
-        <div *ngIf="technologies">
+        <div *ngIf="technologies" class="h-40">
             <ec-items-list
                 [items]="getTechnologiesStringArray()"
             ></ec-items-list>
