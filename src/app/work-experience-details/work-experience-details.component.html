@@ -6,7 +6,7 @@
     </div>
     <div class="">
         <span class="text-xl text-light-system-gray-1">
-            From {{work.time[0] | date}} To {{work.time[1] === 'present' ? 'Present' : work.time[1] | date}}
+            {{work.time[0] | date : 'MMM y'}} - {{work.time[1] === 'present' ? 'Present' : work.time[1] | date : 'MMM y' }}
         </span>
     </div>
     <div class="">

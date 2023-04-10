@@ -3,18 +3,20 @@
     #listItems 
     [multiple]="false"
     (selectionChange)="onItemChange($event)"
-    class="w-3/12"
+    class="w-3/12 min-w-[200px]"
     >
-        <mat-list-option 
-        *ngFor="let listValue of getListLabels();"
-        class="border-l-4 border-light-system-gray-1 text-light-system-gray-1"
-        checkboxPosition="before"
-        [value]="listValue"
-        [class.active]="selectedItem === listValue"
-        [ngClass]="listValue === defaultSelection ? 'active' : ''"
-        >
-        {{listValue}}
-        </mat-list-option>
+            <div *ngIf="myListLabels$ | async as listLabels">
+                <mat-list-option 
+                    *ngFor="let listValue of listLabels"
+                    class="min-h-[70px] border-l-4 border-light-system-gray-1 text-light-system-gray-1"
+                    checkboxPosition="before"
+                    [value]="listValue"
+                    [class.active]="selectedItem === listValue"
+                    [ngClass]="listValue === defaultSelection ? 'active' : ''"
+                    >
+                    {{listValue}}
+                </mat-list-option>
+            </div>
     </mat-selection-list>
     <ng-container #listContent class="w-9/12">
     </ng-container>

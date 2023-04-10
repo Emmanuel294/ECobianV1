@@ -8,7 +8,7 @@ import { WorkDocument } from '../entities/work.types';
 })
 export class WorkExperienceDetailsComponent implements OnInit {
 
-  @Input('work') work!: WorkDocument;
+  @Input('work') work: WorkDocument | undefined;
 
   constructor() { }
 

@@ -19,6 +19,7 @@ import { EcItemsListComponent } from './custom-components/ec-items-list/ec-items
 import { WorkExperienceComponent } from './work-experience/work-experience.component';
 import { EcDetailsListComponent } from './custom-components/ec-details-list/ec-details-list.component';
 import { WorkExperienceDetailsComponent } from './work-experience-details/work-experience-details.component';
+import { ConfigurationModule } from './services/configuration/configuration.module';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,10 @@ import { WorkExperienceDetailsComponent } from './work-experience-details/work-e
     ),
     AngularFirestoreModule,
     BrowserModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ConfigurationModule.forRoot(
+      environment.userSettings
+    )
   ],
   providers: [
     FirebaseService,

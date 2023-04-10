@@ -1,9 +1,11 @@
 <div class="m-auto w-9/12">
     <div *ngIf="works">
-        <ec-separator [separatorName]="'Work Experience'"></ec-separator>
-        <ec-details-list
-        class="w-full"
-                [listValues]="getListValuesFromWorks()"
-            ></ec-details-list>
+        <ec-separator [separatorName]="'Work & Experience'"></ec-separator>
+        <div *ngIf="worksObservable$ | async as valuesFromWorks">
+            <ec-details-list
+            class="w-full"
+                    [listValues]="valuesFromWorks"
+                ></ec-details-list>
+        </div>
     </div>
 </div>

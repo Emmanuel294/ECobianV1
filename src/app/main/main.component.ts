@@ -4,11 +4,12 @@ import { ButtonT } from '../types/components/button.type';
 import { PresentationT } from '../types/components/presentation.type';
 import { ProfileService } from '../services/profile/profile.service';
 import { ProfileDocument } from '../entities/profile.types';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription, map } from 'rxjs';
 import { TechnologyService } from '../services/technology/technology.service';
 import { TechnologyDocument } from '../entities/technologie.types';
 import { WorkService } from '../services/work/work.service';
 import { WorkDocument } from '../entities/work.types';
+import { ConfigurationService } from '../services/configuration/configuration.service';
 
 @Component({
   selector: 'app-main',
@@ -28,12 +29,12 @@ export class MainComponent implements AfterViewInit, OnDestroy {
   public navVarLinks: Array<LinkT> = [
     {
       link: 'About',
-      href: '#',
+      href: 'aboutMe',
       tooltip: 'About me'
     },
     {
       link: 'Experience',
-      href: '#',
+      href: 'workExperience',
       tooltip: 'Experience'
     },
     {
@@ -46,7 +47,7 @@ export class MainComponent implements AfterViewInit, OnDestroy {
   public navVarButtons: Array<ButtonT> = [
     {
       title: 'Resume',
-      link: '#',
+      link: 'https://firebasestorage.googleapis.com/v0/b/ecobian-5b0be.appspot.com/o/ecobian%2Fresume%2F01_Emmanuel_Cobian_-_Software_Engineer.pdf?alt=media&token=3d53eb74-8f66-496d-816e-3d8a43d30a29',
       tooltip: 'Download Resume'
     },
   ];
@@ -57,7 +58,10 @@ export class MainComponent implements AfterViewInit, OnDestroy {
     content: ''
   }
 
+  public worksObservable$!: Observable<Array<WorkDocument>>;
+
   constructor(
+    private readonly configurationService: ConfigurationService,
     private readonly profileService: ProfileService,
     private readonly technologyService: TechnologyService,
     private readonly workService: WorkService,
@@ -91,11 +95,17 @@ export class MainComponent implements AfterViewInit, OnDestroy {
         }
       );
 
-    this.worksSubscription = this.workService.getWorksObservable()
-      .subscribe(
-        (workDocuments: Array<WorkDocument>): void => {
-          this.worksDocuments = workDocuments;
-        }
+    this.worksObservable$ = this.workService.getWorksObservable()
+      .pipe(
+        map(
+          (documents: Array<WorkDocument>): Array<WorkDocument> => {
+            return documents.sort(
+              (a: WorkDocument, b: WorkDocument): number => {
+                return b.time[0] - a.time[0];
+              }
+            )
+          }
+        )
       );
   }
 

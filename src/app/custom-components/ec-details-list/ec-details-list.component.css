@@ -4,7 +4,7 @@
     font-family: 'Share Tech';
     font-size: 1.3rem;
   }
-.mat-list-item.active{
+  .mat-list-item.active{
     color: #83C3FF;
     border-color: #83C3FF;
   }

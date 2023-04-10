@@ -1,19 +1,19 @@
 <div class="grid">
-    <div class="col-start-1 col-end-13 row-start-1 row-end-2">
+    <div class="sticky top-0 z-30 bg-light-system-purple-3 col-start-1 col-end-13 row-start-1 row-end-2">
         <ec-nav-bar [links]="navVarLinks" [buttons]="navVarButtons"></ec-nav-bar>
     </div>
-    <div class="col-start-5 col-end-7 row-start-2 mt-52 mb-52">
+    <div id="presentation" class="col-start-5 col-end-7 row-start-2 mt-52 mb-52">
         <ec-presentation [presentation]="presentationContent" ></ec-presentation>
     </div>
-    <div class="col-start-4 col-end-11 row-start-3 mt-52 mb-52">
+    <div id="aboutMe" class="pt-12 col-start-4 col-end-11 row-start-3 mt-52 mb-52">
         <about-me 
             [profile]="profileDocument"
             [technologies]="technologiesDocuments"
             ></about-me>
     </div>
-    <div class="col-start-4 col-end-11 row-start-4 mt-52 mb-52">
+    <div id="workExperience" class="col-start-4 col-end-11 row-start-4 mt-52 mb-52" *ngIf="worksObservable$ | async as workDocuments">
         <work-experience 
-            [works]="worksDocuments"
+            [works]="workDocuments"
             ></work-experience>
     </div>
 </div>
