@@ -5,5 +5,6 @@ export type ProfileDocument = {
     description: string,
     aboutMe: string,
     email: string,
-    picture: string
+    profilePicture: string,
+    resumeLink: string,
 }

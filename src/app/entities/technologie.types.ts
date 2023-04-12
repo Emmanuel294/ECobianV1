@@ -1,3 +1,4 @@
 export type TechnologyDocument = {
-    name: string
+    name: string,
+    id: string,
 }

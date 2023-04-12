@@ -8,6 +8,9 @@ import { Component, Input, OnInit } from '@angular/core';
 export class EcItemsListComponent implements OnInit {
 
   @Input('items') items: Array<string> = [];
+  @Input('listStyle') listStyle: boolean = true;
+  @Input('itemsClass') itemsClass: string = '';
+  @Input('listDirection') listDirection: string = 'flex-col';
 
   constructor() { }
 

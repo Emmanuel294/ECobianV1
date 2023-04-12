@@ -1,0 +1,12 @@
+<div class="m-auto w-9/12">
+    <div *ngIf="personalProjects">
+        <ec-separator [separatorName]="'Personal Projects'"></ec-separator>
+        <div class="flex flex-wrap justify-center">
+            <ec-card 
+                *ngFor="let cardItem of cardItems"
+                class="w-64 min-h-[16rem] m-5 mr-10"
+                [cardItem]="cardItem"
+            ></ec-card>
+        </div>
+    </div>
+</div>

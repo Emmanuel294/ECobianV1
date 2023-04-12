@@ -5,6 +5,7 @@ import { EcPresentationComponent } from './ec-presentation/ec-presentation.compo
 import { EcSeparatorComponent } from './ec-separator/ec-separator.component';
 import { EcItemsListComponent } from './ec-items-list/ec-items-list.component';
 import { EcDetailsListComponent } from './ec-details-list/ec-details-list.component';
+import { EcCardComponent } from './ec-card/ec-card.component';
 
 
 
@@ -14,7 +15,8 @@ import { EcDetailsListComponent } from './ec-details-list/ec-details-list.compon
     EcPresentationComponent,
     EcSeparatorComponent,
     EcItemsListComponent,
-    EcDetailsListComponent
+    EcDetailsListComponent,
+    EcCardComponent
   ],
   imports: [
     CommonModule
@@ -23,7 +25,8 @@ import { EcDetailsListComponent } from './ec-details-list/ec-details-list.compon
     EcNavBarComponent,
     EcPresentationComponent,
     EcSeparatorComponent,
-    EcItemsListComponent
+    EcItemsListComponent,
+    EcCardComponent
   ]
 })
 export class CustomComponentsModule { }

@@ -1,8 +1,13 @@
-import { TechnologyDocument } from "./technologie.types"
+
+type LinkT = {
+    name: string;
+    link: string;
+}
 
 export type PersonalProjectDocument = {
     name: string,
     description: string,
-    technologies: Array<TechnologyDocument>,
-    githubLink?: string;
+    technologies: Array<string>,
+    links?: Array<LinkT>;
+    icon?: string;
 }

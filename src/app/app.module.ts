@@ -19,7 +19,10 @@ import { EcItemsListComponent } from './custom-components/ec-items-list/ec-items
 import { WorkExperienceComponent } from './work-experience/work-experience.component';
 import { EcDetailsListComponent } from './custom-components/ec-details-list/ec-details-list.component';
 import { WorkExperienceDetailsComponent } from './work-experience-details/work-experience-details.component';
-import { ConfigurationModule } from './services/configuration/configuration.module';
+import { PersonalProjectsComponent } from './personal-projects/personal-projects.component';
+import { EcCardComponent } from './custom-components/ec-card/ec-card.component';
+import { PersonalProjectCardComponent } from './personal-project-card/personal-project-card.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -28,11 +31,15 @@ import { ConfigurationModule } from './services/configuration/configuration.modu
     EcPresentationComponent,
     EcSeparatorComponent,
     EcItemsListComponent,
+    EcCardComponent,
     MainComponent,
     AboutMeComponent,
     WorkExperienceComponent,
     EcDetailsListComponent,
-    WorkExperienceDetailsComponent
+    WorkExperienceDetailsComponent,
+    PersonalProjectsComponent,
+    PersonalProjectCardComponent,
+    ContactComponent
   ],
   imports: [
     AppRoutingModule,
@@ -44,9 +51,6 @@ import { ConfigurationModule } from './services/configuration/configuration.modu
     AngularFirestoreModule,
     BrowserModule,
     BrowserAnimationsModule,
-    ConfigurationModule.forRoot(
-      environment.userSettings
-    )
   ],
   providers: [
     FirebaseService,

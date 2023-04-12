@@ -16,5 +16,8 @@ export class TechnologyService {
   public getTechnologiesObservable(): Observable<Array<TechnologyDocument>> {
     return this.firebaseService.getCollectionDataObservable(FirebaseCollections.technologies);
   }
+  public getTechnologiesSnapshot(): Observable<Array<TechnologyDocument>> {
+    return this.firebaseService.getCollectionSnapshotWithIds(FirebaseCollections.technologies);
+  }
 
 }

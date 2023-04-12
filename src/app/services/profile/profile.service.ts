@@ -16,4 +16,12 @@ export class ProfileService {
   public getProfiles(): Observable<Array<ProfileDocument>> {
     return this.firebaseService.getCollectionDataObservable(FirebaseCollections.profile);
   }
+
+  public getProfilePicture(path: string): Observable<string> {
+    return this.firebaseService.getDocumentUrl(path);
+  }
+
+  public getResume(path: string): Observable<string> {
+    return this.firebaseService.getDocumentUrl(path);
+  }
 }

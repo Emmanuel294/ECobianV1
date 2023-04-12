@@ -1,11 +1,13 @@
 <div *ngIf="items" class="h-full">
-    <ul class="flex flex-col flex-wrap content-start justify-start h-full">
+    <ul class="flex flex-wrap content-start justify-start h-full w-full" [ngClass]='listDirection'>
         <li 
         *ngFor="let item of items" 
-        class="flex mr-10 text-light-system-gray-1 text-xl mt-3"
+        class="flex text-light-system-gray-1"
+        [ngClass]="itemsClass"
         >
         <mat-icon 
         class="text-light-system-purple-1 mr-1"
+        *ngIf="listStyle"
         >
         radio_button_checked
         </mat-icon>

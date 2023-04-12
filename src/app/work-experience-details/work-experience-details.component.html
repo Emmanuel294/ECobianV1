@@ -11,7 +11,11 @@
     </div>
     <div class="">
         <ec-items-list
-        [items]="work.responsibilities"
+            [items]="work.responsibilities"
+            class="mt-2 w-full"
+            [listStyle]="true"
+            [itemsClass]="'mt-5 text-xl'"
+            [listDirection]="'flex-col'"
         >
         </ec-items-list>
     </div>
