@@ -23,6 +23,9 @@ import { PersonalProjectsComponent } from './personal-projects/personal-projects
 import { EcCardComponent } from './custom-components/ec-card/ec-card.component';
 import { PersonalProjectCardComponent } from './personal-project-card/personal-project-card.component';
 import { ContactComponent } from './contact/contact.component';
+import { HeadroomModule } from '@ctrl/ngx-headroom';
+import { EcSpinnerComponent } from './custom-components/ec-spinner/ec-spinner.component';
+
 
 @NgModule({
   declarations: [
@@ -36,6 +39,7 @@ import { ContactComponent } from './contact/contact.component';
     AboutMeComponent,
     WorkExperienceComponent,
     EcDetailsListComponent,
+    EcSpinnerComponent,
     WorkExperienceDetailsComponent,
     PersonalProjectsComponent,
     PersonalProjectCardComponent,
@@ -51,6 +55,7 @@ import { ContactComponent } from './contact/contact.component';
     AngularFirestoreModule,
     BrowserModule,
     BrowserAnimationsModule,
+    HeadroomModule,
   ],
   providers: [
     FirebaseService,

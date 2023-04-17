@@ -9,6 +9,8 @@ import { LinkT } from 'src/app/types/components/links.type';
 })
 export class EcNavBarComponent {
 
+  public logoUrl: string = 'assets/logos/ECLogo.png';
+
   @Input("links") links: Array<LinkT> = [];
   @Input("buttons") buttons: Array<ButtonT> = [];
 

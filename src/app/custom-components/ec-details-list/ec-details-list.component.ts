@@ -12,7 +12,7 @@ type ListValuesMapT = {
 @Component({
   selector: 'ec-details-list',
   templateUrl: './ec-details-list.component.html',
-  styleUrls: ['./ec-details-list.component.css']
+  styleUrls: ['./ec-details-list.component.css'],
 })
 export class EcDetailsListComponent implements AfterViewInit, OnChanges {
 
@@ -31,6 +31,8 @@ export class EcDetailsListComponent implements AfterViewInit, OnChanges {
   public async ngAfterViewInit(): Promise<void> {
     await this.delay(1000);
     this.myListLabels$ = await this.getListLabels();
+    const listElement: HTMLDivElement = document.querySelector('.mat-list-item-content')! as HTMLDivElement;
+    listElement.style.height = '100%!important';
   }
 
   public async getListLabels(): Promise<Observable<Array<string>>> {

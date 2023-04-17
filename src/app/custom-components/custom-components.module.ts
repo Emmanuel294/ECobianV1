@@ -6,6 +6,7 @@ import { EcSeparatorComponent } from './ec-separator/ec-separator.component';
 import { EcItemsListComponent } from './ec-items-list/ec-items-list.component';
 import { EcDetailsListComponent } from './ec-details-list/ec-details-list.component';
 import { EcCardComponent } from './ec-card/ec-card.component';
+import { EcSpinnerComponent } from './ec-spinner/ec-spinner.component';
 
 
 
@@ -16,7 +17,8 @@ import { EcCardComponent } from './ec-card/ec-card.component';
     EcSeparatorComponent,
     EcItemsListComponent,
     EcDetailsListComponent,
-    EcCardComponent
+    EcCardComponent,
+    EcSpinnerComponent
   ],
   imports: [
     CommonModule
@@ -26,7 +28,8 @@ import { EcCardComponent } from './ec-card/ec-card.component';
     EcPresentationComponent,
     EcSeparatorComponent,
     EcItemsListComponent,
-    EcCardComponent
+    EcCardComponent,
+    EcSpinnerComponent
   ]
 })
 export class CustomComponentsModule { }

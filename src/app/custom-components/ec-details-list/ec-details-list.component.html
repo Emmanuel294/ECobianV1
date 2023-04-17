@@ -1,14 +1,14 @@
-<div class="flex w-full justify-start content-center">
+<div class="flex flex-col md:flex-row w-full justify-start content-center">
     <mat-selection-list 
     #listItems 
     [multiple]="false"
     (selectionChange)="onItemChange($event)"
-    class="w-3/12 min-w-[200px]"
+    class="w-full md:w-3/12 md:min-w-[200px]"
     >
-            <div *ngIf="myListLabels$ | async as listLabels">
+            <div *ngIf="myListLabels$ | async as listLabels" class="flex flex-row md:flex-col mt-5">
                 <mat-list-option 
                     *ngFor="let listValue of listLabels"
-                    class="min-h-[70px] border-l-4 border-light-system-gray-1 text-light-system-gray-1"
+                    class="min-h-[110px]  border-b-4 md:border-b-0 md:border-l-4 border-light-system-gray-1 text-light-system-gray-1"
                     checkboxPosition="before"
                     [value]="listValue"
                     [class.active]="selectedItem === listValue"

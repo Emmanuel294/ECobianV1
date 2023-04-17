@@ -6,6 +6,7 @@ module.exports = {
       'light-system-purple-1': '#5994FF',
       'light-system-purple-2': '#70E0FF',
       'light-system-purple-3': '#22269E',
+      'light-system-purple-3-t': 'rgba(34, 38, 158, .90)',
       'light-system-blue-1': '#83C3FF',
       'light-system-gray-1': '#82888C',
       'light-system-blue-a1': 'rgba(131, 195, 255, .36)',

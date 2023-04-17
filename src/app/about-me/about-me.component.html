@@ -1,7 +1,7 @@
-<div class="flex flex-col m-auto w-10/12">
+<div class="flex flex-col m-auto w-10/12 h-full">
     <ec-separator class="w-full" [separatorName]="'About Me'"></ec-separator>
-    <div *ngIf="profile" class="flex justify-center">
-        <div class="w-7/12">
+    <div *ngIf="profile" class="flex flex-col  md:justify-center md:content-center md:flex-row">
+        <div class="w-7/12 mb-10">
             <p class="w-full text-light-system-gray-1 text-2xl mt-3" [innerHTML]="profile.aboutMe">
             </p>
             <br>
@@ -12,11 +12,12 @@
                 <ec-items-list
                     [items]="getTechnologiesStringArray()"
                     [itemsClass]="'mt-3 mr-5 text-xl'"
+                    [listDirection]="'flex-row md:flex-col'"
                 ></ec-items-list>
             </div>
         </div>
-        <div *ngIf="profilePicture" class="w-5/12">
-            <img [src]="profilePicture" alt="profile_picture" class="w-72 h-72 m-auto">
+        <div *ngIf="profilePicture" class="w-5/12 mt-24">
+            <img [src]="profilePicture" alt="profile_picture" class="md:w-72 md:h-72 m-auto">
         </div>
     </div>
 </div>

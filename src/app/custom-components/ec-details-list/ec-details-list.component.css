@@ -4,7 +4,20 @@
     font-family: 'Share Tech';
     font-size: 1.3rem;
   }
-  .mat-list-item.active{
+.mat-list-item:hover{
+    background-color: rgba(0, 0, 0, .2);
     color: #83C3FF;
-    border-color: #83C3FF;
   }
+.mat-list-item.active{
+  color: #83C3FF;
+  border-color: #83C3FF;
+  background-color: rgba(0, 0, 0, .2);
+
+}
+#mat-list-item {
+  animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}

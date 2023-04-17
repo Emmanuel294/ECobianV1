@@ -1,4 +1,4 @@
-<div *ngIf="work" class="flex flex-col items-start max-w-3xl">
+<div id="mainWorkContent" *ngIf="work" class="flex flex-col items-start max-w-3xl">
     <div class="">
         <span class="text-2xl text-[white]">{{work.position}}</span>
         <span class="text-xl text-light-system-gray-1"> at </span>
@@ -9,7 +9,7 @@
             {{work.time[0] | date : 'MMM y'}} - {{work.time[1] === 'present' ? 'Present' : work.time[1] | date : 'MMM y' }}
         </span>
     </div>
-    <div class="">
+    <div class="" >
         <ec-items-list
             [items]="work.responsibilities"
             class="mt-2 w-full"

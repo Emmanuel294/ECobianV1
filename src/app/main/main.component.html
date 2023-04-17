@@ -1,17 +1,21 @@
-<div class="grid">
-    <div 
-        class="sticky top-0 z-30 bg-light-system-purple-3 col-start-1 col-end-13 row-start-1 row-end-2">
+<ec-spinner></ec-spinner>
+<div class="grid" *ngIf="!loaderService.getLoading()">
+    <ngx-headroom [duration]="500" easing="ease-in-out" class="sticky top-0 z-30 col-start-1 col-end-13 row-start-1 row-end-2">
+        <div 
+        class="bg-light-system-purple-3-t "
+        >
         <ec-nav-bar [links]="navVarLinks" [buttons]="navVarButtons"></ec-nav-bar>
-    </div>
+        </div>
+    </ngx-headroom>
     <div 
         id="presentation" 
-        class="col-start-5 col-end-7 row-start-2 mt-52 mb-52">
+        class="col-start-5 col-end-7 row-start-2 mt-56 mb-52">
         <ec-presentation [presentation]="presentationContent" ></ec-presentation>
     </div>
     <div 
         id="aboutMe" 
         class="pt-12 col-start-4 col-end-13 row-start-3 mt-52 mb-52"
-        *ngIf="technologiesObservable$ | async as technologiesDocuments"
+        *ngIf="technologiesDocuments"
         >
         <about-me 
             [profile]="profileDocument"
@@ -22,19 +26,26 @@
     <div 
         id="workExperience" 
         class="pt-12 col-start-4 col-end-13 row-start-4 mt-52 mb-52" 
-        *ngIf="worksObservable$ | async as workDocuments">
+        *ngIf="worksDocuments">
         <work-experience 
-            [works]="workDocuments"
+            [works]="worksDocuments"
             ></work-experience>
     </div>
     <div 
         id="personalProjects" 
         class="pt-12 col-start-4 col-end-13 row-start-5 mt-52 mb-52"
-        *ngIf="personalProjectsObservable$ | async as personalProjectsDocuments"
+        *ngIf="personalProjectsDocuments"
         >
         <personal-projects
             [personalProjects]="personalProjectsDocuments"
         >
         </personal-projects>
+    </div>
+    <div 
+        id="contact"
+        class="pt-12 col-start-7 col-end-11 row-start-6 mt-56 mb-52 flex justify-center content-center"
+        >
+        <contact>
+        </contact>
     </div>
 </div>

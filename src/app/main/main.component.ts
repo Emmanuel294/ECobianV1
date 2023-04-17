@@ -1,21 +1,31 @@
-import { AfterViewInit, Component, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { LinkT } from '../types/components/links.type';
 import { ButtonT } from '../types/components/button.type';
 import { PresentationT } from '../types/components/presentation.type';
 import { ProfileService } from '../services/profile/profile.service';
 import { ProfileDocument } from '../entities/profile.types';
-import { Observable, Subscription, map, tap } from 'rxjs';
+import { combineLatest, Observable, Subscription, map, tap } from 'rxjs';
 import { TechnologyService } from '../services/technology/technology.service';
 import { TechnologyDocument } from '../entities/technologie.types';
 import { WorkService } from '../services/work/work.service';
 import { WorkDocument } from '../entities/work.types';
-import { ConfigurationService } from '../services/configuration/configuration.service';
 import { PersonalProjectsService } from '../services/personal-projects/personal-projects.service';
 import { PersonalProjectDocument } from '../entities/personalProject.types';
+import { LoaderService } from '../services/loader/loader.service';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy'
 
 type TechnologiesMapT = {
   [key: string]: TechnologyDocument
 }
+
+type GeneralDocumentsResponseT = [
+  profileDocuments: Array<ProfileDocument>,
+  technologyDocuments: Array<TechnologyDocument>,
+  workDocuments: Array<WorkDocument>,
+  personalProjectDocuments: Array<PersonalProjectDocument>
+];
+
+@UntilDestroy()
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -29,11 +39,13 @@ export class MainComponent implements AfterViewInit, OnDestroy {
   public profileDocument!: ProfileDocument;
   public technologiesDocuments: Array<TechnologyDocument> = [];
   public worksDocuments: Array<WorkDocument> = [];
+  public personalProjectsDocuments: Array<PersonalProjectDocument> = []
 
   public profilePicture$!: Observable<string>;
-  public technologiesObservable$!: Observable<Array<TechnologyDocument>>;
 
   public technologiesMapById: TechnologiesMapT = {};
+
+  public isLoading: boolean = true;
 
   public navVarLinks: Array<LinkT> = [
     {
@@ -53,7 +65,7 @@ export class MainComponent implements AfterViewInit, OnDestroy {
     },
     {
       link: 'Contact',
-      href: '#',
+      href: 'contact',
       tooltip: 'Contact me'
     }
   ];
@@ -67,10 +79,8 @@ export class MainComponent implements AfterViewInit, OnDestroy {
     content: ''
   }
 
-  public worksObservable$!: Observable<Array<WorkDocument>>;
-  public personalProjectsObservable$!: Observable<Array<PersonalProjectDocument>>;
-
   constructor(
+    public readonly loaderService: LoaderService,
     private readonly profileService: ProfileService,
     private readonly personalProjectsService: PersonalProjectsService,
     private readonly technologyService: TechnologyService,
@@ -78,43 +88,44 @@ export class MainComponent implements AfterViewInit, OnDestroy {
   ) { }
 
   public async ngAfterViewInit(): Promise<void> {
-    this.profilesSubscription = this.profileService
+    this.loaderService.setLoading(true);
+    const profileObservable$: Observable<Array<ProfileDocument>> = this.profileService
       .getProfiles()
-      .subscribe(
-        (profileDocuments: Array<ProfileDocument>): void => {
-          profileDocuments.forEach(
-            (profileDocument: ProfileDocument): void => {
-              this.presentationContent = {
-                presentation: 'Hi my name is',
-                mainContent: `${profileDocument.firstName} ${profileDocument.lastName}.`,
-                content: profileDocument.description
-              };
-            }
-          );
-          this.profileDocument = {
-            ...profileDocuments[0],
-            aboutMe: profileDocuments[0].aboutMe.replace('\\n', '<br>')
-          };
-          this.profilePicture$ = this.profileService.getProfilePicture(this.profileDocument?.profilePicture);
-
-          this.resumeSubscription = this.profileService.getResume(this.profileDocument?.resumeLink)
-            .subscribe(
-              (resume: string): void => {
-                this.navVarButtons = [
-                  {
-                    title: 'Resume',
-                    link: resume,
-                    tooltip: 'Download Resume'
-                  },
-                ]
+      .pipe(
+        tap(
+          (profileDocuments: Array<ProfileDocument>): void => {
+            profileDocuments.forEach(
+              (profileDocument: ProfileDocument): void => {
+                this.presentationContent = {
+                  presentation: 'Hi my name is',
+                  mainContent: `${profileDocument.firstName} ${profileDocument.lastName}.`,
+                  content: profileDocument.description
+                };
               }
             );
-        }
+            this.profileDocument = {
+              ...profileDocuments[0],
+              aboutMe: profileDocuments[0].aboutMe.replace('\\n', '<br>')
+            };
+            this.profilePicture$ = this.profileService.getProfilePicture(this.profileDocument?.profilePicture);
+
+            this.profileService.getResume(this.profileDocument?.resumeLink)
+              .subscribe(
+                (resume: string): void => {
+                  this.navVarButtons = [
+                    {
+                      title: 'Resume',
+                      link: resume,
+                      tooltip: 'Download Resume'
+                    },
+                  ]
+                }
+              );
+          }
+        )
       );
 
-
-
-    this.technologiesObservable$ = this.technologyService.getTechnologiesSnapshot()
+    const technologiesObservable$: Observable<Array<TechnologyDocument>> = this.technologyService.getTechnologiesSnapshot()
       .pipe(
         tap(
           (technologies: Array<TechnologyDocument>): void => {
@@ -131,7 +142,7 @@ export class MainComponent implements AfterViewInit, OnDestroy {
         )
       );
 
-    this.worksObservable$ = this.workService.getWorksObservable()
+    const worksObservable$: Observable<Array<WorkDocument>> = this.workService.getWorksObservable()
       .pipe(
         map(
           (documents: Array<WorkDocument>): Array<WorkDocument> => {
@@ -144,7 +155,7 @@ export class MainComponent implements AfterViewInit, OnDestroy {
         )
       );
 
-    this.personalProjectsObservable$ = this.personalProjectsService.getPersonalProjects().pipe(
+    const personalProjectsObservable$: Observable<Array<PersonalProjectDocument>> = this.personalProjectsService.getPersonalProjects().pipe(
       map(
         (personalProjects: Array<PersonalProjectDocument>): Array<PersonalProjectDocument> => {
           return personalProjects.map(
@@ -165,11 +176,25 @@ export class MainComponent implements AfterViewInit, OnDestroy {
         }
       )
     );
+
+    combineLatest(
+      profileObservable$,
+      technologiesObservable$,
+      worksObservable$,
+      personalProjectsObservable$,
+    ).pipe(
+      untilDestroyed(this),
+    ).subscribe(
+      ([profileDocuments, technologyDocuments, workDocuments, personalProjectDocuments]: GeneralDocumentsResponseT): any => {
+        this.technologiesDocuments = technologyDocuments;
+        this.worksDocuments = workDocuments;
+        this.personalProjectsDocuments = personalProjectDocuments;
+        this.loaderService.setLoading(false);
+      }
+    )
   }
 
   public ngOnDestroy(): void {
-    this.profilesSubscription?.unsubscribe();
-    this.resumeSubscription?.unsubscribe();
   }
 
 }
