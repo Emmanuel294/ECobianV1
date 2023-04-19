@@ -7,7 +7,11 @@
     bottom: 0;
     background-color: #22269E;
     z-index: 9999;
+}
+
+.fade-out {
     animation: fade-out 3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+
 }
 
 @keyframes fade-out {

@@ -31,7 +31,7 @@ type GeneralDocumentsResponseT = [
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
-export class MainComponent implements AfterViewInit, OnDestroy {
+export class MainComponent implements AfterViewInit {
 
   public profilesSubscription: Subscription | undefined = undefined;
   public resumeSubscription: Subscription | undefined = undefined;
@@ -192,9 +192,6 @@ export class MainComponent implements AfterViewInit, OnDestroy {
         this.loaderService.setLoading(false);
       }
     )
-  }
-
-  public ngOnDestroy(): void {
   }
 
 }
