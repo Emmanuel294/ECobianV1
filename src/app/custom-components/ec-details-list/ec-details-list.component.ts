@@ -31,8 +31,15 @@ export class EcDetailsListComponent implements AfterViewInit, OnChanges {
   public async ngAfterViewInit(): Promise<void> {
     await this.delay(1000);
     this.myListLabels$ = await this.getListLabels();
-    const listElement: HTMLDivElement = document.querySelector('.mat-list-item-content')! as HTMLDivElement;
-    listElement.style.height = '100%!important';
+    const listElement: NodeList = document.querySelectorAll('.mat-list-item-content')! as NodeList;
+    console.log('=== listElement ec-details-list.component.ts [35] ===', listElement);
+    if (listElement) {
+      listElement.forEach(
+        (element: any): void => {
+          element.style.height = '100%';
+        }
+      );
+    }
   }
 
   public async getListLabels(): Promise<Observable<Array<string>>> {

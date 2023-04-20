@@ -3,6 +3,7 @@
     color: #82888C;
     font-family: 'Share Tech';
     font-size: 1.3rem;
+    padding: 5px;
   }
 .mat-list-item:hover{
     background-color: rgba(0, 0, 0, .2);
@@ -13,6 +14,9 @@
   border-color: #83C3FF;
   background-color: rgba(0, 0, 0, .2);
 
+}
+.app-class .mat-list-item {
+  height: 100%;
 }
 #mat-list-item {
   animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;

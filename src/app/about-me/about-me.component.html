@@ -1,7 +1,7 @@
 <div class="flex flex-col m-auto w-10/12 h-full">
     <ec-separator class="w-full" [separatorName]="'About Me'"></ec-separator>
-    <div *ngIf="profile" class="flex flex-col  md:justify-center md:content-center md:flex-row">
-        <div class="w-7/12 mb-10">
+    <div *ngIf="profile" class="flex flex-col  md:justify-center md:content-center lg:flex-row">
+        <div class="w-full lg:w-7/12 mb-10">
             <p class="w-full text-light-system-gray-1 text-2xl mt-3" [innerHTML]="profile.aboutMe">
             </p>
             <br>
@@ -16,8 +16,8 @@
                 ></ec-items-list>
             </div>
         </div>
-        <div *ngIf="profilePicture" class="w-5/12 mt-24">
-            <img [src]="profilePicture" alt="profile_picture" class="md:w-72 md:h-72 m-auto">
+        <div *ngIf="profilePicture" class="rounded-lg bg-light-system-lightblue-1 w-5/12 lg:mt-24 md:w-72 md:h-72">
+            <img [src]="profilePicture" alt="profile_picture" class="w-full h-full  rounded-lg shadow-light-system-lightblue-1 shadow-2xl md:w-72 md:h-72 m-auto hover:opacity-60 hover:pr-1 hover:pb-1 hover:-pl-1 hover:-pt-1">
         </div>
     </div>
 </div>
