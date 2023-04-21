@@ -32,7 +32,6 @@ export class EcDetailsListComponent implements AfterViewInit, OnChanges {
     await this.delay(1000);
     this.myListLabels$ = await this.getListLabels();
     const listElement: NodeList = document.querySelectorAll('.mat-list-item-content')! as NodeList;
-    console.log('=== listElement ec-details-list.component.ts [35] ===', listElement);
     if (listElement) {
       listElement.forEach(
         (element: any): void => {
