@@ -11,6 +11,7 @@ module.exports = {
       'light-system-blue-1': '#83C3FF',
       'light-system-gray-1': '#82888C',
       'light-system-blue-a1': 'rgba(131, 195, 255, .36)',
+      'light-system-lightblue-a1': 'rgba(119, 224, 255, .80)',
     },
     fontFamily: {
       'share-tech': ['Share Tech'],

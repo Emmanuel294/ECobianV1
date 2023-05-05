@@ -79,6 +79,8 @@ export class MainComponent implements AfterViewInit {
     content: ''
   }
 
+  public slideComponents: NodeListOf<HTMLDivElement> | undefined = undefined;
+
   constructor(
     public readonly loaderService: LoaderService,
     private readonly profileService: ProfileService,
@@ -86,6 +88,7 @@ export class MainComponent implements AfterViewInit {
     private readonly technologyService: TechnologyService,
     private readonly workService: WorkService,
   ) { }
+
 
   public async ngAfterViewInit(): Promise<void> {
     this.loaderService.setLoading(true);

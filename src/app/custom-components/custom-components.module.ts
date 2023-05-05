@@ -7,6 +7,7 @@ import { EcItemsListComponent } from './ec-items-list/ec-items-list.component';
 import { EcDetailsListComponent } from './ec-details-list/ec-details-list.component';
 import { EcCardComponent } from './ec-card/ec-card.component';
 import { EcSpinnerComponent } from './ec-spinner/ec-spinner.component';
+import { AngularMaterialModule } from '../custom-modules/angularMaterialModule';
 
 
 
@@ -21,7 +22,8 @@ import { EcSpinnerComponent } from './ec-spinner/ec-spinner.component';
     EcSpinnerComponent
   ],
   imports: [
-    CommonModule
+    AngularMaterialModule,
+    CommonModule,
   ],
   exports: [
     EcNavBarComponent,
@@ -29,7 +31,8 @@ import { EcSpinnerComponent } from './ec-spinner/ec-spinner.component';
     EcSeparatorComponent,
     EcItemsListComponent,
     EcCardComponent,
-    EcSpinnerComponent
+    EcSpinnerComponent,
+    EcDetailsListComponent
   ]
 })
 export class CustomComponentsModule { }

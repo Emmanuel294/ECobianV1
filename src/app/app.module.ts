@@ -10,36 +10,24 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore/'
 import { AngularFireModule } from '@angular/fire/compat';
 import { FirebaseService } from './services/firebase/firebase.service';
 import { ProfileService } from './services/profile/profile.service';
-import { EcNavBarComponent } from './custom-components/ec-nav-bar/ec-nav-bar.component';
 import { MainComponent } from './main/main.component';
-import { EcPresentationComponent } from './custom-components/ec-presentation/ec-presentation.component';
-import { EcSeparatorComponent } from './custom-components/ec-separator/ec-separator.component';
 import { AboutMeComponent } from './about-me/about-me.component';
-import { EcItemsListComponent } from './custom-components/ec-items-list/ec-items-list.component';
 import { WorkExperienceComponent } from './work-experience/work-experience.component';
-import { EcDetailsListComponent } from './custom-components/ec-details-list/ec-details-list.component';
 import { WorkExperienceDetailsComponent } from './work-experience-details/work-experience-details.component';
 import { PersonalProjectsComponent } from './personal-projects/personal-projects.component';
-import { EcCardComponent } from './custom-components/ec-card/ec-card.component';
 import { PersonalProjectCardComponent } from './personal-project-card/personal-project-card.component';
 import { ContactComponent } from './contact/contact.component';
 import { HeadroomModule } from '@ctrl/ngx-headroom';
-import { EcSpinnerComponent } from './custom-components/ec-spinner/ec-spinner.component';
+import { CustomComponentsModule } from './custom-components/custom-components.module';
+import { ScrollEventsService } from './services/events/scroll.events.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    EcNavBarComponent,
-    EcPresentationComponent,
-    EcSeparatorComponent,
-    EcItemsListComponent,
-    EcCardComponent,
     MainComponent,
     AboutMeComponent,
     WorkExperienceComponent,
-    EcDetailsListComponent,
-    EcSpinnerComponent,
     WorkExperienceDetailsComponent,
     PersonalProjectsComponent,
     PersonalProjectCardComponent,
@@ -55,11 +43,13 @@ import { EcSpinnerComponent } from './custom-components/ec-spinner/ec-spinner.co
     AngularFirestoreModule,
     BrowserModule,
     BrowserAnimationsModule,
+    CustomComponentsModule,
     HeadroomModule,
   ],
   providers: [
     FirebaseService,
-    ProfileService
+    ProfileService,
+    ScrollEventsService
   ],
   bootstrap: [AppComponent]
 })

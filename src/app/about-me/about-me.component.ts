@@ -1,23 +1,34 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, Input } from '@angular/core';
 import { ProfileDocument } from '../entities/profile.types';
 import { TechnologyDocument } from '../entities/technologie.types';
-import { Observable } from 'rxjs';
-
+import { trigger, state, animate, transition } from '@angular/animations';
+import { SlideInS, SlideOutS } from '../styleObjects/slide.style';
+import { ScrollEventsService } from '../services/events/scroll.events.service';
 @Component({
   selector: 'about-me',
   templateUrl: './about-me.component.html',
-  styleUrls: ['./about-me.component.css']
+  styleUrls: ['./about-me.component.css'],
+  animations: [
+    trigger('slide', [
+      state('show', SlideInS),
+      state('hide', SlideOutS),
+      transition('show => hide', animate('400ms ease-out')),
+      transition('hide => show', animate('400ms ease-in'))
+    ])
+  ]
 })
-export class AboutMeComponent implements OnInit {
+export class AboutMeComponent {
+
+  public state = 'hide';
 
   @Input('profile') profile: ProfileDocument | undefined = undefined;
   @Input('technologies') technologies: Array<TechnologyDocument> | undefined = undefined;
   @Input('profilePicture') profilePicture: string | undefined | null = undefined;
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  constructor(
+    public el: ElementRef,
+    private readonly scrollService: ScrollEventsService
+  ) { }
 
   public getTechnologiesStringArray(): Array<string> {
     if (!this.technologies) return [];
@@ -26,6 +37,11 @@ export class AboutMeComponent implements OnInit {
         return technology.name;
       }
     );
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  public checkScroll(): void {
+    this.state = this.scrollService.checkScroll(this.el);
   }
 
 }

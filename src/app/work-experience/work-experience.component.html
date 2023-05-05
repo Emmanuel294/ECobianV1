@@ -1,4 +1,4 @@
-<div class="m-auto w-9/12">
+<div class="m-auto w-9/12" [@slide]="state">
     <div *ngIf="works">
         <ec-separator [separatorName]="'Work & Experience'"></ec-separator>
         <div *ngIf="worksObservable$ | async as valuesFromWorks">
