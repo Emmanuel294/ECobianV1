@@ -2,24 +2,24 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EcItemsListComponent } from './ec-items-list.component';
 
-describe('EcItemsListComponent', () => {
-  let component: EcItemsListComponent;
-  let fixture: ComponentFixture<EcItemsListComponent>;
+describe('EcItemsListComponent', (): void => {
+  let component: EcItemsListComponent | undefined = undefined;
+  let fixture: ComponentFixture<EcItemsListComponent> | undefined = undefined;
 
-  beforeEach(async () => {
+  beforeEach(async (): Promise<void> => {
     await TestBed.configureTestingModule({
-      declarations: [ EcItemsListComponent ]
+      declarations: [EcItemsListComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
-  beforeEach(() => {
+  beforeEach((): void => {
     fixture = TestBed.createComponent(EcItemsListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create', (): void => {
     expect(component).toBeTruthy();
   });
 });

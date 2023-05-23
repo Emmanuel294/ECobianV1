@@ -1,18 +1,19 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
-import { LinkT } from '../types/components/links.type';
-import { ButtonT } from '../types/components/button.type';
-import { PresentationT } from '../types/components/presentation.type';
-import { ProfileService } from '../services/profile/profile.service';
-import { ProfileDocument } from '../entities/profile.types';
-import { combineLatest, Observable, Subscription, map, tap } from 'rxjs';
-import { TechnologyService } from '../services/technology/technology.service';
-import { TechnologyDocument } from '../entities/technologie.types';
-import { WorkService } from '../services/work/work.service';
-import { WorkDocument } from '../entities/work.types';
-import { PersonalProjectsService } from '../services/personal-projects/personal-projects.service';
-import { PersonalProjectDocument } from '../entities/personalProject.types';
-import { LoaderService } from '../services/loader/loader.service';
+import { AfterViewInit, Component } from '@angular/core';
+import { combineLatest, map, Observable, Subscription, tap } from 'rxjs';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy'
+import { ButtonT } from '../types/components/button.type';
+import { LinkT } from '../types/components/links.type';
+import { LoaderService } from '../services/loader/loader.service';
+import { PersonalProjectDocument } from '../entities/personalProject.types';
+import { PersonalProjectsService } from '../services/personal-projects/personal-projects.service';
+import { PresentationT } from '../types/components/presentation.type';
+import { ProfileDocument } from '../entities/profile.types';
+import { ProfileService } from '../services/profile/profile.service';
+import { SideBarItem } from '../types/components/sideBarItem.type';
+import { TechnologyDocument } from '../entities/technologie.types';
+import { TechnologyService } from '../services/technology/technology.service';
+import { WorkDocument } from '../entities/work.types';
+import { WorkService } from '../services/work/work.service';
 
 type TechnologiesMapT = {
   [key: string]: TechnologyDocument
@@ -28,11 +29,10 @@ type GeneralDocumentsResponseT = [
 @UntilDestroy()
 @Component({
   selector: 'app-main',
+  styleUrls: ['./main.component.css'],
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
 })
 export class MainComponent implements AfterViewInit {
-
   public profilesSubscription: Subscription | undefined = undefined;
   public resumeSubscription: Subscription | undefined = undefined;
 
@@ -49,39 +49,52 @@ export class MainComponent implements AfterViewInit {
 
   public navVarLinks: Array<LinkT> = [
     {
-      link: 'About',
       href: 'aboutMe',
+      link: 'About',
       tooltip: 'About me'
     },
     {
-      link: 'Experience',
       href: 'workExperience',
+      link: 'Experience',
       tooltip: 'Experience'
     },
     {
-      link: 'Projects',
       href: 'personalProjects',
+      link: 'Projects',
       tooltip: 'Projects'
     },
     {
-      link: 'Contact',
       href: 'contact',
+      link: 'Contact',
       tooltip: 'Contact me'
     }
   ];
+
+  public sideBarItems: Array<SideBarItem> = [
+    {
+      icon: 'twitter',
+      label: 'twitter',
+      link: '',
+    },
+    {
+      icon: '',
+      label: 'Git',
+      link: '',
+    }
+  ]
 
   public navVarButtons: Array<ButtonT> = [
   ];
 
   public presentationContent: PresentationT = {
-    presentation: '',
+    content: '',
     mainContent: '',
-    content: ''
+    presentation: '',
   }
 
   public slideComponents: NodeListOf<HTMLDivElement> | undefined = undefined;
 
-  constructor(
+  public constructor(
     public readonly loaderService: LoaderService,
     private readonly profileService: ProfileService,
     private readonly personalProjectsService: PersonalProjectsService,
@@ -100,9 +113,9 @@ export class MainComponent implements AfterViewInit {
             profileDocuments.forEach(
               (profileDocument: ProfileDocument): void => {
                 this.presentationContent = {
-                  presentation: 'Hi my name is',
+                  content: profileDocument.description,
                   mainContent: `${profileDocument.firstName} ${profileDocument.lastName}.`,
-                  content: profileDocument.description
+                  presentation: 'Hi my name is',
                 };
               }
             );
@@ -117,8 +130,8 @@ export class MainComponent implements AfterViewInit {
                 (resume: string): void => {
                   this.navVarButtons = [
                     {
-                      title: 'Resume',
                       link: resume,
+                      title: 'Resume',
                       tooltip: 'Download Resume'
                     },
                   ]
@@ -196,5 +209,4 @@ export class MainComponent implements AfterViewInit {
       }
     )
   }
-
 }

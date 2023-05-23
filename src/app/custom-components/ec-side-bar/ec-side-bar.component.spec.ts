@@ -1,20 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { EcSideBarComponent } from './ec-side-bar.component';
 
-import { ContactComponent } from './contact.component';
-
-describe('ContactComponent', (): void => {
-  let component: ContactComponent | undefined = undefined;
-  let fixture: ComponentFixture<ContactComponent> | undefined = undefined;
+describe('EcSideBarComponent', (): void => {
+  let component: EcSideBarComponent | undefined = undefined;
+  let fixture: ComponentFixture<EcSideBarComponent> | undefined = undefined;
 
   beforeEach(async (): Promise<void> => {
     await TestBed.configureTestingModule({
-      declarations: [ContactComponent]
+      declarations: [EcSideBarComponent]
     })
       .compileComponents();
   });
 
   beforeEach((): void => {
-    fixture = TestBed.createComponent(ContactComponent);
+    fixture = TestBed.createComponent(EcSideBarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

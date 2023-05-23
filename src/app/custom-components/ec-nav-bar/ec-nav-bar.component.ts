@@ -4,16 +4,12 @@ import { LinkT } from 'src/app/types/components/links.type';
 
 @Component({
   selector: 'ec-nav-bar',
+  styleUrls: ['./ec-nav-bar.component.css'],
   templateUrl: './ec-nav-bar.component.html',
-  styleUrls: ['./ec-nav-bar.component.css']
 })
 export class EcNavBarComponent {
-
   public logoUrl: string = 'assets/logos/ECLogo.png';
 
-  @Input("links") links: Array<LinkT> = [];
-  @Input("buttons") buttons: Array<ButtonT> = [];
-
-  constructor() { }
-
+  @Input("links") public links: Array<LinkT> = [];
+  @Input("buttons") public buttons: Array<ButtonT> = [];
 }

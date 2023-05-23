@@ -1,16 +1,16 @@
+import { PersonalProjectsService } from './personal-projects.service';
 import { TestBed } from '@angular/core/testing';
 
-import { PersonalProjectsService } from './personal-projects.service';
 
-describe('PersonalProjectsService', () => {
-  let service: PersonalProjectsService;
+describe('PersonalProjectsService', (): void => {
+  let service: PersonalProjectsService | undefined = undefined;
 
-  beforeEach(() => {
+  beforeEach((): void => {
     TestBed.configureTestingModule({});
     service = TestBed.inject(PersonalProjectsService);
   });
 
-  it('should be created', () => {
+  it('should be created', (): void => {
     expect(service).toBeTruthy();
   });
 });

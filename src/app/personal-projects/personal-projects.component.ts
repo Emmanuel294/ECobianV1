@@ -1,16 +1,14 @@
-import { Component, OnChanges, ElementRef, HostListener, Input, AfterViewInit } from '@angular/core';
-import { PersonalProjectDocument } from '../entities/personalProject.types';
-import { CardT } from '../types/components/card.type';
-import { PersonalProjectCardComponent } from '../personal-project-card/personal-project-card.component';
-import { DescriptionList } from '../types/interfaces/descriptionList.interface';
-import { ScrollEventsService } from '../services/events/scroll.events.service';
-import { trigger, state, animate, transition } from '@angular/animations';
+
+import { AfterViewInit, Component, ElementRef, HostListener, Input, OnChanges } from '@angular/core';
+import { animate, state, transition, trigger } from '@angular/animations';
 import { SlideInS, SlideOutS } from '../styleObjects/slide.style';
+import { CardT } from '../types/components/card.type';
+import { DescriptionList } from '../types/interfaces/descriptionList.interface';
+import { PersonalProjectCardComponent } from '../personal-project-card/personal-project-card.component';
+import { PersonalProjectDocument } from '../entities/personalProject.types';
+import { ScrollEventsService } from '../services/events/scroll.events.service';
 
 @Component({
-  selector: 'personal-projects',
-  templateUrl: './personal-projects.component.html',
-  styleUrls: ['./personal-projects.component.css'],
   animations: [
     trigger('slide', [
       state('show', SlideInS),
@@ -18,17 +16,19 @@ import { SlideInS, SlideOutS } from '../styleObjects/slide.style';
       transition('show => hide', animate('400ms ease-out')),
       transition('hide => show', animate('400ms ease-in'))
     ])
-  ]
+  ],
+  selector: 'personal-projects',
+  styleUrls: ['./personal-projects.component.css'],
+  templateUrl: './personal-projects.component.html',
 })
 export class PersonalProjectsComponent implements AfterViewInit, OnChanges {
+  @Input('personalProjects') public personalProjects: Array<PersonalProjectDocument> | undefined = undefined;
 
-  @Input('personalProjects') personalProjects: Array<PersonalProjectDocument> | undefined = undefined;
-
-  public state = 'hide';
+  public state: string = 'hide';
 
   public cardItems: Array<CardT<PersonalProjectDocument>> = [];
 
-  constructor(
+  public constructor(
     public el: ElementRef,
     private readonly scrollService: ScrollEventsService
   ) { }
@@ -42,13 +42,13 @@ export class PersonalProjectsComponent implements AfterViewInit, OnChanges {
       this.cardItems = this.personalProjects.map(
         (personalProject: PersonalProjectDocument): CardT<PersonalProjectDocument> => {
           const newCardItem: CardT<PersonalProjectDocument> = {
-            header: personalProject.name,
-            headerIcon: personalProject.icon ? personalProject.icon : 'folder',
+            component: PersonalProjectCardComponent as unknown as DescriptionList,
             content: {
               content: personalProject,
               itemsList: personalProject.technologies
             },
-            component: PersonalProjectCardComponent as unknown as DescriptionList
+            header: personalProject.name,
+            headerIcon: personalProject.icon ? personalProject.icon : 'folder',
           }
 
           return newCardItem;
@@ -65,5 +65,4 @@ export class PersonalProjectsComponent implements AfterViewInit, OnChanges {
   public checkScroll(): void {
     this.state = this.scrollService.checkScroll(this.el);
   }
-
 }

@@ -1,50 +1,33 @@
 <ec-spinner></ec-spinner>
 <div class="grid" *ngIf="!loaderService.getLoading()">
-    <ngx-headroom [duration]="500" easing="ease-in-out" class="sticky top-0 z-30 col-start-1 col-end-13 row-start-1 row-end-2">
-        <div 
-        class="bg-light-system-purple-3-t pt-1"
-        >
-        <ec-nav-bar [links]="navVarLinks" [buttons]="navVarButtons"></ec-nav-bar>
+    <ngx-headroom [duration]="500" easing="ease-in-out"
+        class="sticky top-0 z-30 col-start-1 col-end-13 row-start-1 row-end-2">
+        <div class="bg-light-system-purple-3-t pt-1">
+            <ec-nav-bar [links]="navVarLinks" [buttons]="navVarButtons"></ec-nav-bar>
         </div>
     </ngx-headroom>
-    <div 
-        id="presentation" 
-        class="col-start-5 col-end-12 md:col-end-7 row-start-2 mt-56 mb-52">
-        <ec-presentation [presentation]="presentationContent" ></ec-presentation>
+    <div class="sticky top-0 z-30 col-start-1 col-end-2 row-start-3 row-end-2">
+        <ec-side-bar [items]="sideBarItems">
+
+        </ec-side-bar>
     </div>
-    <div 
-        id="aboutMe" 
-        class="pt-12 col-start-4 col-end-13 row-start-3 mt-52 mb-52 slide"
-        *ngIf="technologiesDocuments"
-        >
-        <about-me 
-            [profile]="profileDocument"
-            [profilePicture]="profilePicture$ | async"
-            [technologies]="technologiesDocuments"
-            ></about-me>
+    <div id="presentation" class="col-start-5 col-end-12 md:col-end-7 row-start-2 mt-56 mb-52">
+        <ec-presentation [presentation]="presentationContent"></ec-presentation>
     </div>
-    <div 
-        id="workExperience" 
-        class="pt-12 col-start-4 col-end-13 row-start-4 mt-52 mb-52 slide" 
-        *ngIf="worksDocuments">
-        <work-experience 
-            [works]="worksDocuments"
-            ></work-experience>
+    <div id="aboutMe" class="pt-12 col-start-4 col-end-13 row-start-3 mt-52 mb-52 slide" *ngIf="technologiesDocuments">
+        <about-me [profile]="profileDocument" [profilePicture]="profilePicture$ | async"
+            [technologies]="technologiesDocuments"></about-me>
     </div>
-    <div 
-        id="personalProjects" 
-        class="pt-12 col-start-4 col-end-13 row-start-5 mt-52 mb-52 slide"
-        *ngIf="personalProjectsDocuments"
-        >
-        <personal-projects
-            [personalProjects]="personalProjectsDocuments"
-        >
+    <div id="workExperience" class="pt-12 col-start-4 col-end-13 row-start-4 mt-52 mb-52 slide" *ngIf="worksDocuments">
+        <work-experience [works]="worksDocuments"></work-experience>
+    </div>
+    <div id="personalProjects" class="pt-12 col-start-4 col-end-13 row-start-5 mt-52 mb-52 slide"
+        *ngIf="personalProjectsDocuments">
+        <personal-projects [personalProjects]="personalProjectsDocuments">
         </personal-projects>
     </div>
-    <div 
-        id="contact"
-        class="pt-12 col-start-5 lg:col-start-7 col-end-11 row-start-6 mt-56 mb-52 flex justify-center content-center slide"
-        >
+    <div id="contact"
+        class="pt-12 col-start-5 lg:col-start-7 col-end-11 row-start-6 mt-56 mb-52 flex justify-center content-center slide">
         <contact>
         </contact>
     </div>

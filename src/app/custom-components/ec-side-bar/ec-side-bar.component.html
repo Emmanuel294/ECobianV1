@@ -1,0 +1,15 @@
+<div class="min-h-screen flex justify-center items-center" [ngClass]="flexDirection">
+    <ul class="min-h-screen flex justify-start items-start" [ngClass]="flexDirection">
+        <div class="w-full flex justify-center items-center">
+            <hr class="w-[1px] h-32 bg-[white]">
+        </div>
+        <li *ngFor="let item of items" class="h-10">
+            <a href="item.link">
+                <mat-icon class="text-light-system-purple-1 mr-1">
+                    {{item.icon}}
+                </mat-icon>
+                {{item.label}}
+            </a>
+        </li>
+    </ul>
+</div>

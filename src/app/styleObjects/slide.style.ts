@@ -1,21 +1,23 @@
 import { style } from '@angular/animations';
 
-export const SlideInS = style({
+type StyleT = any;
+
+export const SlideInS: StyleT = style({
     opacity: 1,
     transform: "translateX(0)"
 })
 
-export const SlideOutS = style({
+export const SlideOutS: StyleT = style({
     opacity: 0,
     transform: "translateX(-100%)"
 })
 
-export const SlideInBottomUpS = style({
+export const SlideInBottomUpS: StyleT = style({
     opacity: 1,
     transform: "translateY(0)"
 })
 
-export const SlideOutUpBottomS = style({
+export const SlideOutUpBottomS: StyleT = style({
     opacity: 0,
     transform: "translateY(100%)"
 })

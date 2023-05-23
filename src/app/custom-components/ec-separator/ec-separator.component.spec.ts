@@ -1,25 +1,24 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { EcSeparatorComponent } from './ec-separator.component';
 
-describe('EcSeparatorComponent', () => {
-  let component: EcSeparatorComponent;
-  let fixture: ComponentFixture<EcSeparatorComponent>;
+describe('EcSeparatorComponent', (): void => {
+  let component: EcSeparatorComponent | undefined = undefined;
+  let fixture: ComponentFixture<EcSeparatorComponent> | undefined = undefined;
 
-  beforeEach(async () => {
+  beforeEach(async (): Promise<void> => {
     await TestBed.configureTestingModule({
-      declarations: [ EcSeparatorComponent ]
+      declarations: [EcSeparatorComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
-  beforeEach(() => {
+  beforeEach((): void => {
     fixture = TestBed.createComponent(EcSeparatorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create', (): void => {
     expect(component).toBeTruthy();
   });
 });

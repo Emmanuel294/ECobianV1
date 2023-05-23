@@ -1,18 +1,17 @@
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy'
 import { Component, OnInit } from '@angular/core';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy'
 import { LoaderService } from 'src/app/services/loader/loader.service';
 
 @UntilDestroy()
 @Component({
   selector: 'ec-spinner',
+  styleUrls: ['./ec-spinner.component.css'],
   templateUrl: './ec-spinner.component.html',
-  styleUrls: ['./ec-spinner.component.css']
 })
 export class EcSpinnerComponent implements OnInit {
-
   public hide: boolean = false;
 
-  constructor(
+  public constructor(
     public readonly loaderService: LoaderService
   ) { }
 
@@ -32,5 +31,4 @@ export class EcSpinnerComponent implements OnInit {
         }
       );
   }
-
 }

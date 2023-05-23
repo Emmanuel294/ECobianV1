@@ -2,24 +2,24 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EcSpinnerComponent } from './ec-spinner.component';
 
-describe('EcSpinnerComponent', () => {
-  let component: EcSpinnerComponent;
-  let fixture: ComponentFixture<EcSpinnerComponent>;
+describe('EcSpinnerComponent', (): void => {
+  let component: EcSpinnerComponent | undefined = undefined;
+  let fixture: ComponentFixture<EcSpinnerComponent> | undefined = undefined;
 
-  beforeEach(async () => {
+  beforeEach(async (): Promise<void> => {
     await TestBed.configureTestingModule({
-      declarations: [ EcSpinnerComponent ]
+      declarations: [EcSpinnerComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
-  beforeEach(() => {
+  beforeEach((): void => {
     fixture = TestBed.createComponent(EcSpinnerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create', (): void => {
     expect(component).toBeTruthy();
   });
 });

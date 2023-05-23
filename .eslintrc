@@ -1,0 +1,83 @@
+/* ••[1]••••••••••••••••••••••••• .eslintrcBlueRoster.js •••••••••••••••••••••••••••••• */
+
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended"
+    ],
+    "rules": {
+        // https://eslint.org/docs/rules/
+        // https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin/docs/rules
+        "@typescript-eslint/ban-ts-comment": "off",
+        "@typescript-eslint/ban-types": "off",
+        "@typescript-eslint/explicit-function-return-type": [
+            "error",
+            {
+                "allowExpressions": false,
+                "allowTypedFunctionExpressions": false,
+                "allowHigherOrderFunctions": false,
+                "allowDirectConstAssertionInArrowFunctions": false,
+                "allowConciseArrowFunctionExpressionsStartingWithVoid": false,
+            },
+        ],
+        "@typescript-eslint/explicit-member-accessibility": ["error"],
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/init-declarations": ["error"],
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-inferrable-types": "off",
+        "@typescript-eslint/no-unused-vars": [
+            "warn",
+            { "varsIgnorePattern": "^_", "argsIgnorePattern": "^_" },
+        ],
+        "@typescript-eslint/no-var-requires": "off",
+        "@typescript-eslint/typedef": [
+            "error",
+            {
+                "arrayDestructuring": true,
+                "arrowParameter": true,
+                "memberVariableDeclaration": true,
+                "objectDestructuring": true,
+                "parameter": true,
+                "propertyDeclaration": true,
+                "variableDeclaration": true,
+                "variableDeclarationIgnoreFunction": true,
+            },
+        ],
+        "@typescript-eslint/no-useless-constructor": 0,
+        "accessor-pairs": "off",
+        "dot-notation": "off",
+        "import/no-duplicates": "off",
+        "init-declarations": "off",
+        "no-multiple-empty-lines": ["warn", { "max": 1 }],
+        "no-restricted-imports": "off",
+        "no-empty-function": "off",
+        "no-undef-init": "off",
+        "no-useless-constructor": 0,
+        "object-shorthand": ["error", "always"],
+        "padded-blocks": ["error", "never"],
+        "require-jsdoc": "off",
+        "sort-imports": [
+            "error",
+            {
+                "ignoreCase": true,
+                "ignoreDeclarationSort": false,
+                "ignoreMemberSort": false,
+                "memberSyntaxSortOrder": ["none", "all", "multiple", "single"],
+                "allowSeparatedGroups": false,
+            },
+        ],
+        "sort-keys": [
+            "error",
+            "asc",
+            { "caseSensitive": false, "natural": true, "minKeys": 2 },
+        ],
+        "camelcase": "off",
+        "strict": ["error", "global"],
+    },
+}

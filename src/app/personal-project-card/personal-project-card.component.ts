@@ -1,22 +1,14 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { DescriptionList } from '../types/interfaces/descriptionList.interface';
-import { PersonalProjectDocument } from '../entities/personalProject.types';
 
 @Component({
   selector: 'personal-project-card',
+  styleUrls: ['./personal-project-card.component.css'],
   templateUrl: './personal-project-card.component.html',
-  styleUrls: ['./personal-project-card.component.css']
 })
-export class PersonalProjectCardComponent implements OnInit, DescriptionList {
-
-  @Input('content') content: any = {
+export class PersonalProjectCardComponent implements DescriptionList {
+  @Input('content') public content: any = {
     content: '',
     itemsList: []
   };
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }

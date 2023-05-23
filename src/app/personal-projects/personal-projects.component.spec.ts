@@ -1,25 +1,24 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { PersonalProjectsComponent } from './personal-projects.component';
 
-import { PersonalProyectsComponent } from './personal-projects.component';
+describe('PersonalProjectsComponent', (): void => {
+  let component: PersonalProjectsComponent | undefined = undefined;
+  let fixture: ComponentFixture<PersonalProjectsComponent> | undefined = undefined;
 
-describe('PersonalProyectsComponent', () => {
-  let component: PersonalProyectsComponent;
-  let fixture: ComponentFixture<PersonalProyectsComponent>;
-
-  beforeEach(async () => {
+  beforeEach(async (): Promise<void> => {
     await TestBed.configureTestingModule({
-      declarations: [PersonalProyectsComponent]
+      declarations: [PersonalProjectsComponent]
     })
       .compileComponents();
   });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(PersonalProyectsComponent);
+  beforeEach((): void => {
+    fixture = TestBed.createComponent(PersonalProjectsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create', (): void => {
     expect(component).toBeTruthy();
   });
 });

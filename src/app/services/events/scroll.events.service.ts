@@ -4,12 +4,9 @@ import { ElementRef, Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ScrollEventsService {
-
-  constructor() { }
-
   public checkScroll(el: ElementRef, distance: number = 600): string {
-    const componentPosition = el.nativeElement.offsetTop
-    const scrollPosition = window.scrollY
+    const componentPosition: number = el.nativeElement.offsetTop
+    const scrollPosition: number = window.scrollY
     if (scrollPosition >= componentPosition - distance) {
       return 'show'
     } else {

@@ -1,17 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'ec-separator',
+  styleUrls: ['./ec-separator.component.css'],
   templateUrl: './ec-separator.component.html',
-  styleUrls: ['./ec-separator.component.css']
 })
-export class EcSeparatorComponent implements OnInit {
-
-  @Input('separatorName') separatorName: string = '';
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class EcSeparatorComponent {
+  @Input('separatorName') public separatorName: string = '';
 }

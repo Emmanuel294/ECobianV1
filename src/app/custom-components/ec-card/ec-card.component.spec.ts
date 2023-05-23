@@ -2,24 +2,24 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EcCardComponent } from './ec-card.component';
 
-describe('EcCardComponent', () => {
-  let component: EcCardComponent;
-  let fixture: ComponentFixture<EcCardComponent>;
+describe('EcCardComponent', (): void => {
+  let component: EcCardComponent<any> | undefined = undefined;
+  let fixture: ComponentFixture<EcCardComponent<any>> | undefined = undefined;
 
-  beforeEach(async () => {
+  beforeEach(async (): Promise<void> => {
     await TestBed.configureTestingModule({
-      declarations: [ EcCardComponent ]
+      declarations: [EcCardComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
-  beforeEach(() => {
+  beforeEach((): void => {
     fixture = TestBed.createComponent(EcCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create', (): void => {
     expect(component).toBeTruthy();
   });
 });

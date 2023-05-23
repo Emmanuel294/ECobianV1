@@ -1,15 +1,14 @@
-import { Injectable } from '@angular/core';
-import { FirebaseService } from '../firebase/firebase.service';
-import { TechnologyDocument } from 'src/app/entities/technologie.types';
 import { FirebaseCollections } from 'src/app/entities/firebase.types';
+import { FirebaseService } from '../firebase/firebase.service';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { TechnologyDocument } from 'src/app/entities/technologie.types';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TechnologyService {
-
-  constructor(
+  public constructor(
     private readonly firebaseService: FirebaseService
   ) { }
 
@@ -19,5 +18,4 @@ export class TechnologyService {
   public getTechnologiesSnapshot(): Observable<Array<TechnologyDocument>> {
     return this.firebaseService.getCollectionSnapshotWithIds(FirebaseCollections.technologies);
   }
-
 }

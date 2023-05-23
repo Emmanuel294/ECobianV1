@@ -1,12 +1,9 @@
+import { animate, state, transition, trigger } from '@angular/animations';
 import { Component, ElementRef, HostListener } from '@angular/core';
-import { ScrollEventsService } from '../services/events/scroll.events.service';
-import { trigger, state, animate, transition } from '@angular/animations';
 import { SlideInBottomUpS, SlideOutUpBottomS } from '../styleObjects/slide.style';
+import { ScrollEventsService } from '../services/events/scroll.events.service';
 
 @Component({
-  selector: 'contact',
-  templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css'],
   animations: [
     trigger('slide', [
       state('show', SlideInBottomUpS),
@@ -14,13 +11,15 @@ import { SlideInBottomUpS, SlideOutUpBottomS } from '../styleObjects/slide.style
       transition('show => hide', animate('400ms ease-out')),
       transition('hide => show', animate('400ms ease-in'))
     ])
-  ]
+  ],
+  selector: 'contact',
+  styleUrls: ['./contact.component.css'],
+  templateUrl: './contact.component.html',
 })
 export class ContactComponent {
+  public state: string = 'hide';
 
-  public state = 'hide';
-
-  constructor(
+  public constructor(
     public el: ElementRef,
     private readonly scrollService: ScrollEventsService
   ) { }
@@ -29,5 +28,4 @@ export class ContactComponent {
   public checkScroll(): void {
     this.state = this.scrollService.checkScroll(this.el, 800);
   }
-
 }

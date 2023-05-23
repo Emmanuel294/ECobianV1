@@ -1,15 +1,14 @@
-import { Injectable } from '@angular/core';
-import { FirebaseService } from '../firebase/firebase.service';
-import { WorkDocument } from 'src/app/entities/work.types';
 import { FirebaseCollections } from 'src/app/entities/firebase.types';
+import { FirebaseService } from '../firebase/firebase.service';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { WorkDocument } from 'src/app/entities/work.types';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WorkService {
-
-  constructor(
+  public constructor(
     private readonly firebaseService: FirebaseService
   ) { }
 

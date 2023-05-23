@@ -1,16 +1,16 @@
+import { ScrollEventsService } from './scroll.events.service';
 import { TestBed } from '@angular/core/testing';
 
-import { Scroll.EventsService } from './scroll.events.service';
 
-describe('Scroll.EventsService', () => {
-  let service: Scroll.EventsService;
+describe('ScrollEventsService', (): void => {
+  let service: ScrollEventsService | undefined = undefined;
 
-  beforeEach(() => {
+  beforeEach((): void => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(Scroll.EventsService);
+    service = TestBed.inject(ScrollEventsService);
   });
 
-  it('should be created', () => {
+  it('should be created', (): void => {
     expect(service).toBeTruthy();
   });
 });

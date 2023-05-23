@@ -110,9 +110,21 @@
             "firebaseProject": "ecobian-5b0be",
             "firebaseHostingSite": "ecobian-5b0be"
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
-  "defaultProject": "ECobianV1"
+  "defaultProject": "ECobianV1",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }
