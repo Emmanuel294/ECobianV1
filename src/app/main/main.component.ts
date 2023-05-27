@@ -70,18 +70,31 @@ export class MainComponent implements AfterViewInit {
     }
   ];
 
-  public sideBarItems: Array<SideBarItem> = [
+  public leftSideBarItems: Array<SideBarItem> = [
     {
-      icon: 'twitter',
-      label: 'twitter',
-      link: '',
+      icon: 'fa-brands fa-twitter',
+      link: 'https://twitter.com/Emmanue94534125',
     },
     {
-      icon: '',
-      label: 'Git',
-      link: '',
+      icon: 'fa-brands fa-instagram',
+      link: 'https://www.instagram.com/manuelitocz/',
+    },
+    {
+      icon: 'fa-brands fa-linkedin',
+      link: 'https://www.linkedin.com/in/emmanuel-cobian-2b90b3115/',
+    },
+    {
+      icon: 'fa-brands fa-github',
+      link: 'https://github.com/Emmanuel294',
     }
-  ]
+  ];
+
+  public rightSideBarItems: Array<SideBarItem> = [
+    {
+      label: 'emmanuelcobianz294@gmail.com',
+      link: 'mailto:emmanuelcobianz294@gmail.com',
+    }
+  ];
 
   public navVarButtons: Array<ButtonT> = [
   ];

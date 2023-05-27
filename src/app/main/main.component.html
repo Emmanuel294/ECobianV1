@@ -7,8 +7,11 @@
         </div>
     </ngx-headroom>
     <div class="sticky top-0 z-30 col-start-1 col-end-2 row-start-3 row-end-2">
-        <ec-side-bar [items]="sideBarItems">
-
+        <ec-side-bar [items]="leftSideBarItems">
+        </ec-side-bar>
+    </div>
+    <div class="sticky top-0 z-30 col-start-12 col-end-13 row-start-3 row-end-2">
+        <ec-side-bar [items]="rightSideBarItems">
         </ec-side-bar>
     </div>
     <div id="presentation" class="col-start-5 col-end-12 md:col-end-7 row-start-2 mt-56 mb-52">
@@ -27,7 +30,7 @@
         </personal-projects>
     </div>
     <div id="contact"
-        class="pt-12 col-start-5 lg:col-start-7 col-end-11 row-start-6 mt-56 mb-52 flex justify-center content-center slide">
+        class="pt-12 col-start-5 lg:col-start-6 lg:ml-32 sm:ml-2 col-end-10 row-start-6 mt-56 mb-52 flex justify-center content-center slide">
         <contact>
         </contact>
     </div>

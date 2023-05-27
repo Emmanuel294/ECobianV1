@@ -3,12 +3,14 @@
         <div class="w-full flex justify-center items-center">
             <hr class="w-[1px] h-32 bg-[white]">
         </div>
-        <li *ngFor="let item of items" class="h-10">
-            <a href="item.link">
-                <mat-icon class="text-light-system-purple-1 mr-1">
-                    {{item.icon}}
-                </mat-icon>
-                {{item.label}}
+        <li *ngFor="let item of items" class="w-full flex justify-center items-baseline ">
+            <a href="{{item.link}}" target="_blank" class="text-[white] hover:text-light-system-purple-1">
+                <span *ngIf="item.icon" class="ml-4 h-12 fa fa-stack fa-lg">
+                    <i [ngClass]="item.icon" class="text-3xl"></i>
+                </span>
+                <span class="rotate-120" style="writingMode: 'vertical-rl'">
+                    {{item.label}}
+                </span>
             </a>
         </li>
     </ul>
