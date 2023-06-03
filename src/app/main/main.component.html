@@ -6,11 +6,11 @@
             <ec-nav-bar [links]="navVarLinks" [buttons]="navVarButtons"></ec-nav-bar>
         </div>
     </ngx-headroom>
-    <div class="sticky top-0 z-30 col-start-1 col-end-2 row-start-3 row-end-2">
+    <div class="invisible lg:visible sticky top-0 z-30 col-start-1 col-end-2 row-start-3 row-end-2">
         <ec-side-bar [items]="leftSideBarItems">
         </ec-side-bar>
     </div>
-    <div class="sticky top-0 z-30 col-start-12 col-end-13 row-start-3 row-end-2">
+    <div class="invisible lg:visible sticky top-0 z-30 col-start-12 col-end-13 row-start-3 row-end-2">
         <ec-side-bar [items]="rightSideBarItems">
         </ec-side-bar>
     </div>
@@ -30,8 +30,24 @@
         </personal-projects>
     </div>
     <div id="contact"
-        class="pt-12 col-start-5 lg:col-start-6 lg:ml-32 sm:ml-2 col-end-10 row-start-6 mt-56 mb-52 flex justify-center content-center slide">
+        class="pt-12 col-start-6 lg:col-start-6 lg:ml-32 sm:ml-2 col-end-6 row-start-6 mt-56 mb-52 flex justify-center content-center slide">
         <contact>
         </contact>
+    </div>
+    <div id="footer" class="pt-12 row-start-7 mx-auto col-start-6 col-end-10 mb-10 flex flex-col slide">
+        <div class="flex justify-center visible lg:invisible">
+            <li *ngFor="let item of leftSideBarItems" class="w-full flex justify-center items-baseline ">
+                <a href="{{item.link}}" target="_blank" class="text-[white] hover:text-light-system-purple-1">
+                    <span *ngIf="item.icon" class="ml-4 h-12 fa fa-stack fa-lg">
+                        <i [ngClass]="item.icon" class="text-3xl"></i>
+                    </span>
+                    <span class="rotate-120" style="writingMode: 'vertical-rl'">
+                        {{item.label}}
+                    </span>
+                </a>
+            </li>
+        </div>
+        <a href="https://github.com/Emmanuel294/ECobianV1" target="_blank"
+            class="text-[white] hover:text-light-system-purple-1">Designed & Built by Emmanuel Cobian</a>
     </div>
 </div>

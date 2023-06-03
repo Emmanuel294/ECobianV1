@@ -4,10 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "npm run lint && ng serve --port 4300",
-    "build": "ng build",
+    "build": "npm run lint && ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "ng build && firebase deploy",
+    "deploy": "npm run build && firebase deploy",
     "lint": "eslint . --ext .ts"
   },
   "private": true,

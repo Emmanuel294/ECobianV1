@@ -71,10 +71,10 @@ export class MainComponent implements AfterViewInit {
   ];
 
   public leftSideBarItems: Array<SideBarItem> = [
-    {
-      icon: 'fa-brands fa-twitter',
-      link: 'https://twitter.com/Emmanue94534125',
-    },
+    // {
+    //   icon: 'fa-brands fa-twitter',
+    //   link: 'https://twitter.com/Emmanue94534125',
+    // },
     {
       icon: 'fa-brands fa-instagram',
       link: 'https://www.instagram.com/manuelitocz/',
