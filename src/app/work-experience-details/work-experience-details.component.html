@@ -1,0 +1,22 @@
+<div id="mainWorkContent" *ngIf="inputData" class="flex flex-col items-start max-w-3xl">
+    <div class="">
+        <span class="text-2xl text-[white]">{{inputData.position}}</span>
+        <span class="text-xl text-light-system-gray-1"> at </span>
+        <span class="text-2xl text-light-system-lightblue-1">{{inputData.place}}</span>
+    </div>
+    <div class="">
+        <span class="text-xl text-light-system-gray-1">
+            {{inputData.time[0] | date : 'MMM y'}} - {{inputData.time[1] === 'present' ? 'Present' : inputData.time[1] | date : 'MMM y' }}
+        </span>
+    </div>
+    <div class="" >
+        <ec-items-list
+            [items]="inputData.responsibilities"
+            class="mt-2 w-full"
+            [listStyle]="true"
+            [itemsClass]="'mt-5 text-xl'"
+            [listDirection]="'flex-col'"
+        >
+        </ec-items-list>
+    </div>
+</div>

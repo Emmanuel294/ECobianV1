@@ -1,0 +1,115 @@
+@use '@angular/material' as mat;
+@include mat.core();
+
+$ec-blue-purple-palette: (
+    50: #e1f5fe,
+    100: #94c8f8,
+    200: #8fc6fa,
+    300: #83C3FF,
+  400: #729ae4,
+  500: #6c99ec,
+  600: #5994FF,
+  700: #6b73ce,
+  800: #5058ac,
+  900: #3D4490,
+  A100: #85aefa,
+  A200: #71a2fc,
+  A400: #5992fd,
+  A700: #4b8aff,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: white,
+    A700: white,
+  )
+);
+$ec-blue-dark-palette: (
+    50: #e1f5fe,
+    100: #afe1fa,
+    200: #9cddfd,
+    300: #86D6FE,
+  400: #87a8fc,
+  500: #6b95fd,
+  600: #4278FF,
+  700: #5b63ac,
+  800: #363f8a,
+  900: #1F266B,
+  A100: #638aeb,
+  A200: #4872dd,
+  A400: #4e59c0,
+  A700: #3440ad,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: white,
+    A700: white,
+  )
+);
+
+$ec-red-green-palette: (
+    50: #ffe6c8,
+    100: #fdd09c,
+    200: #ffbb6e,
+    300: #FD9A28,
+  400: #ffb3a0,
+  500: #fd8568,
+  600: #FF5126,
+  700: #f37f7f,
+  800: #e94646,
+  900: #d50000,
+  A100: #ec8267,
+  A200: #e25a39,
+  A400: #f55151,
+  A700: #f31d1d,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: white,
+    A700: white,
+  )
+);
+
+$ec-primary: mat.define-palette($ec-blue-purple-palette, 700, 300, 900);
+$ec-accent: mat.define-palette($ec-blue-dark-palette, 300, 100, 500);
+// The warn palette is optional (defaults to red).
+$ec-warn: mat.define-palette($ec-red-green-palette, 700);
+
+$ec-theme: mat.define-light-theme((
+  color: (
+    primary: $ec-primary,
+    accent: $ec-accent,
+    warn: $ec-warn,
+  )
+));
+
+@include mat.all-component-themes($ec-theme);

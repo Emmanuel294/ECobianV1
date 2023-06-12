@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ecobian-5b0be": {
+      "hosting": {
+        "ECobianV1": [
+          "ecobian-5b0be"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ecobian-5b0be"
+  }
+}

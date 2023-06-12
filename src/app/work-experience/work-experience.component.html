@@ -1,0 +1,12 @@
+<div class="m-auto w-9/12" [@slide]="state">
+    <div *ngIf="works">
+        <ec-separator [separatorName]="'Work & Experience'"></ec-separator>
+        <div *ngIf="worksObservable$ | async as valuesFromWorks">
+            <ec-details-list
+            class="w-full"
+                    [listValues]="valuesFromWorks"
+                    [dynamicComponent]="dynamicComponent"
+                ></ec-details-list>
+        </div>
+    </div>
+</div>

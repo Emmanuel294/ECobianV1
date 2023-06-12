@@ -1,0 +1,23 @@
+<div class="flex flex-col m-auto w-10/12 h-full" [@slide]="state">
+    <ec-separator class="w-full" [separatorName]="'About Me'"></ec-separator>
+    <div *ngIf="profile" class="flex flex-col  md:justify-center md:content-center lg:flex-row">
+        <div class="w-full lg:w-7/12 mb-10">
+            <p class="w-full text-light-system-gray-1 text-2xl mt-3" [innerHTML]="profile.aboutMe">
+            </p>
+            <br>
+            <p class="w-full text-light-system-gray-1 text-2xl mt-3">
+                Here are a few of the technologies I've been working with:
+            </p>
+            <div *ngIf="technologies" class="h-40">
+                <ec-items-list
+                    [items]="getTechnologiesStringArray()"
+                    [itemsClass]="'mt-3 mr-5 text-xl'"
+                    [listDirection]="'flex-row md:flex-col'"
+                ></ec-items-list>
+            </div>
+        </div>
+        <div *ngIf="profilePicture" class="rounded-lg bg-light-system-lightblue-a1 w-5/12 lg:mt-24 md:w-72 md:h-72 ml-5">
+            <img [src]="profilePicture" alt="profile_picture" class="w-full h-full  rounded-lg shadow-light-system-lightblue-1 shadow-2xl m-auto hover:opacity-60">
+        </div>
+    </div>
+</div>
