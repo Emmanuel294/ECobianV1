@@ -1,35 +1,35 @@
-import { TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { TestBed, TestBedStatic } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
-describe('AppComponent', () => {
-  beforeEach(async () => {
+describe('AppComponent', (): void => {
+  beforeEach(async (): Promise<void> => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
       declarations: [
         AppComponent
+      ],
+      imports: [
+        RouterTestingModule
       ],
     }).compileComponents();
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
+  it('should create the app', (): void => {
+    const fixture: any = TestBed.createComponent(AppComponent);
+    const app: any = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'ECobianV1'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
+  it(`should have as title 'ECobianV1'`, (): void => {
+    const fixture: any = TestBed.createComponent(AppComponent);
+    const app: any = fixture.componentInstance;
     expect(app.title).toEqual('ECobianV1');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  it('should render title', (): void => {
+    const fixture: any = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
+    const compiled: any = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('.content span')?.textContent).toContain('ECobianV1 app is running!');
   });
 });

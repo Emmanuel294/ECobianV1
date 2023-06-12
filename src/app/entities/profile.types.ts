@@ -1,9 +1,10 @@
 export type ProfileDocument = {
-    name: string,
-    surname: string,
+    firstName: string,
+    lastName: string,
     age: number,
-    quickDescription: string,
-    about: string,
+    description: string,
+    aboutMe: string,
     email: string,
-    picture: string
+    profilePicture: string,
+    resumeLink: string,
 }

@@ -1,0 +1,17 @@
+<div class="flex flex-col w-full pt-2 px-2">
+    <p class="text-base">
+        {{content.content.description}}
+    </p>
+    <ul class="flex flex-wrap mt-1">
+        <li *ngFor="let link of content.content.links" class="mr-2">
+            <a [href]="link.link" target="_blank" class="underline hover:text-light-system-purple-1">{{link.name}}</a>
+        </li>
+    </ul>
+    <ec-items-list
+        class="mt-2"
+        [items]="content.itemsList"
+        [listStyle]="false"
+        [itemsClass]="'mr-5'"
+        [listDirection]="'flex-row'"
+    ></ec-items-list>
+</div>

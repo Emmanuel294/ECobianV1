@@ -7,8 +7,11 @@
     .ec-custom-link {
        @apply hover:text-light-system-purple-1 hover:cursor-pointer hover:border hover:border-2 hover:rounded-md hover:border-light-system-purple-1 hover:bg-light-system-blue-a1 py-2 px-4
     }
+    .ec-custom-link-mobile {
+      @apply hover:text-light-system-purple-1 text-[white]
+   }
     .ec-custom-button {
-       @apply text-light-system-purple-1 border border-2 rounded-md border-light-system-purple-1 py-2 px-4 m-1 hover:bg-light-system-blue-a1 font-share-tech text-xl
+       @apply text-light-system-purple-1 border border-2 rounded-md hover:cursor-pointer border-light-system-purple-1 py-2 px-4 m-1 hover:bg-light-system-blue-a1 font-share-tech text-xl
     }
 }
 html, body { height: 100%; }
